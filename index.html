@@ -12,7 +12,15 @@
 <header class="topbar">
   <a class="brand" href="#"><span class="brand-mark">NM</span><span>NIGER <b>MARCHÉ</b><small>IMMOBILIER • AUTO • SÉJOUR</small></span></a>
   <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
-  <nav id="nav"><a href="#annonces">Annonces</a><a href="#publier">Publier une annonce</a><a href="#tarifs">Tarifs</a><a href="#paiements">Paiements</a><a href="#apropos">À propos</a></nav>
+  <nav id="nav">
+<a href="#annonces">Annonces</a>
+<a href="#publier">Publier une annonce</a>
+<a href="#tarifs">Tarifs</a>
+<a href="#paiements">Paiements</a>
+<a href="#apropos">À propos</a>
+<button type="button" id="loginBtn">Connexion</button>
+<button type="button" id="signupBtn">Inscription</button>
+  </nav>
   <a class="post-top" href="#publier">＋ Déposer une annonce</a>
 </header>
 <main>
@@ -93,11 +101,32 @@
 </section>
 
 <section class="trust" id="apropos"><span class="eyebrow">POUR LE MARCHÉ NIGÉRIEN</span><h2>Un seul endroit. Plusieurs projets.</h2><div class="trust-grid"><article><b>01</b><h3>Immobilier</h3><p>Achat et vente de parcelles, maisons et terrains.</p></article><article><b>02</b><h3>Location & séjour</h3><p>Maisons à louer, hôtels et cases de passage.</p></article><article><b>03</b><h3>Auto & moto</h3><p>Véhicules et motos avec contact direct vendeur.</p></article></div></section>
+<div id="authModal" class="auth-modal hidden">
+  <div class="auth-box">
+    <button type="button" id="closeAuth" class="auth-close">✕</button>
+    <h2 id="authTitle">Connexion</h2>
+
+    <form id="authForm">
+      <label>Adresse e-mail
+        <input type="email" id="authEmail" required placeholder="Votre e-mail">
+      </label>
+
+      <label>Mot de passe
+        <input type="password" id="authPassword" required minlength="6" placeholder="6 caractères minimum">
+      </label>
+
+      <button type="submit" id="authSubmit">Se connecter</button>
+    </form>
+
+    <p id="authMessage"></p>
+    <button type="button" id="switchAuth">Créer un compte</button>
+  </div>
+</div>
 </main>
 <footer><a class="brand footer-brand" href="#"><span class="brand-mark">NM</span><span>NIGER <b>MARCHÉ</b><small>IMMOBILIER • AUTO • SÉJOUR</small></span></a><p>© 2026 Niger Marché. Plateforme de petites annonces au Niger.</p><a href="https://wa.me/22791634827" target="_blank" rel="noopener">WhatsApp : +227 91 63 48 27</a><a href="#publier">Publier une annonce ↑</a></footer>
 <a class="whatsapp-float" href="https://wa.me/22791634827?text=Bonjour%20Niger%20March%C3%A9" target="_blank" rel="noopener" aria-label="Contacter Niger Marché sur WhatsApp">☏</a>\n<div class="toast" id="toast" role="status"></div>
-<script src="app.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="./supabase-config.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
