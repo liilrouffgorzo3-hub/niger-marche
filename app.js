@@ -65,3 +65,31 @@ if (transactionForm) transactionForm.addEventListener("submit", e => {
  result.classList.remove("hidden");
  if(confirm("Envoyer la déclaration à NIGER MARCHÉ par WhatsApp ?")) window.open("https://wa.me/22791634827?text="+encodeURIComponent(message),"_blank");
 });
+// CONNEXION SUPABASE NIGER MARCHÉ
+const supabaseClient = window.supabase.createClient(
+  window.SUPABASE_URL,
+  window.SUPABASE_ANON_KEY
+);
+
+async function inscrireUtilisateur(email, password) {
+  return await supabaseClient.auth.signUp({
+    email,
+    password
+  });
+}
+
+async function connecterUtilisateur(email, password) {
+  return await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+}
+
+async function deconnecterUtilisateur() {
+  return await supabaseClient.auth.signOut();
+}
+
+async function utilisateurConnecte() {
+  const { data } = await supabaseClient.auth.getSession();
+  return data.session;
+}
