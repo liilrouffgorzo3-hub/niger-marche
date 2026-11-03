@@ -93,3 +93,61 @@ async function utilisateurConnecte() {
   const { data } = await supabaseClient.auth.getSession();
   return data.session;
 }
+// BOUTONS CONNEXION ET INSCRIPTION
+let modeAuth = "login";
+
+const authModal = document.getElementById("authModal");
+
+function ouvrirAuth(mode) {
+  modeAuth = mode;
+  authModal.classList.remove("hidden");
+  document.getElementById("authTitle").textContent =
+    mode === "signup" ? "Créer un compte" : "Connexion";
+  document.getElementById("authSubmit").textContent =
+    mode === "signup" ? "Créer mon compte" : "Se connecter";
+  document.getElementById("switchAuth").textContent =
+    mode === "signup" ? "J'ai déjà un compte" : "Créer un compte";
+}
+
+document.getElementById("loginBtn").addEventListener("click", () => ouvrirAuth("login"));
+document.getElementById("signupBtn").addEventListener("click", () => ouvrirAuth("signup"));
+
+document.getElementById("closeAuth").addEventListener("click", () => {
+  authModal.classList.add("hidden");
+});
+
+document.getElementById("switchAuth").addEventListener("click", () => {
+  ouvrirAuth(modeAuth === "login" ? "signup" : "login");
+});
+
+document.getElementById("authForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+  const message = document.getElementById("authMessage");
+  const submit = document.getElementById("authSubmit");
+
+  submit.disabled = true;
+  message.textContent = "Patientez...";
+
+  try {
+    const result = modeAuth === "signup"
+      ? await inscrireUtilisateur(email, password)
+      : await connecterUtilisateur(email, password);
+
+    if (result.error) throw result.error;
+
+    message.textContent = modeAuth === "signup"
+      ? "Compte créé. Vérifiez votre e-mail si une confirmation est demandée."
+      : "Connexion réussie.";
+
+    if (modeAuth === "login" && result.data.session) {
+      setTimeout(() => authModal.classList.add("hidden"), 1500);
+    }
+  } catch (error) {
+    message.textContent = error.message || "Une erreur est survenue.";
+  } finally {
+    submit.disabled = false;
+  }
+});
