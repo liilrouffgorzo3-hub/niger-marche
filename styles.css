@@ -11,3 +11,84 @@
 
 /* Moyens de paiement */
 .payment-methods{padding:76px max(5vw,20px);background:#f4f7f4}.payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin-top:28px}.payment-card{background:#fff;border:1px solid #e0e8e1;border-radius:16px;padding:22px 18px;box-shadow:0 8px 24px rgba(16,37,29,.05)}.payment-card h3{font-size:1rem;margin:12px 0 5px;color:#10251d}.payment-card p{margin:0;color:#63736a;font-size:.9rem}.payment-symbol{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#e6f1e9;color:#17633e;font-weight:800;font-size:1.2rem}.payment-warning{margin:22px 0 0;padding:14px 16px;border-left:4px solid #c58b28;background:#fff8e9;color:#59451e;border-radius:8px;font-size:.9rem;line-height:1.55}
+/* FENETRE CONNEXION NIGER MARCHE */
+.auth-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-modal.hidden {
+  display: none;
+}
+
+.auth-box {
+  background: #f6f5ef;
+  color: #17251f;
+  width: 100%;
+  max-width: 420px;
+  padding: 28px;
+  border-radius: 18px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+
+.auth-box h2 {
+  color: #12382b;
+  margin: 0 0 22px;
+}
+
+.auth-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  border: 0;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.auth-box label {
+  display: block;
+  margin: 14px 0;
+  font-weight: 600;
+}
+
+.auth-box input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  margin-top: 7px;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+}
+
+.auth-box button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background: #12382b;
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+#switchAuth {
+  margin-top: 15px;
+  border: 0;
+  background: transparent;
+  color: #1d5942;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#authMessage {
+  overflow-wrap: anywhere;
+}
