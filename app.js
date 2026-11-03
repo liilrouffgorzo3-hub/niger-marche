@@ -37,13 +37,45 @@ function showDetails(id){
 document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));b.classList.add("active");activeCat=b.dataset.cat;render();}));
 ["keyword","region","type","sort"].forEach(id=>$(id).addEventListener(id==="keyword"?"input":"change",render));
 $("reset").addEventListener("click",()=>{$("keyword").value="";$("region").value="";$("type").value="";$("sort").value="recent";activeCat="Tous";document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.cat==="Tous"));render();});
-$("listingForm").addEventListener("submit",e=>{
- e.preventDefault();const f=new FormData(e.target),x=Object.fromEntries(f.entries());
- x.id=Date.now();x.price=Number(x.price);x.phone=(x.phone||"").replace(/[^0-9+]/g,"");x.icon=({Parcelles:"🌱",Maisons:"🏠",Locations:"🔑",Hôtels:"🛎️",Voitures:"🚘",Motos:"🏍️"})[x.category]||"📍";
- listings.push(x);const custom=listings.filter(a=>a.id>Date.now()-86400000);localStorage.setItem("nm_listings",JSON.stringify(custom));
- const message=`Bonjour, je souhaite publier cette annonce sur Niger Marché :\n${x.title}\nCatégorie : ${x.category}\nVille : ${x.city}\nPrix : ${fmt(x.price)}\nTéléphone : ${x.phone}\nDescription : ${x.description||"—"}`;
- render();e.target.reset();toast("Annonce ajoutée sur cet appareil. Préparez son partage.");
- if(confirm("Envoyer les informations de l'annonce par WhatsApp ?"))window.open(`https://wa.me/?text=${encodeURIComponent(message)}`,"_blank");
+$("listingForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const session = await utilisateurConnecte();
+
+  if (!session) {
+    ouvrirAuth("login");
+    toast("Connectez-vous avant de publier une annonce.");
+    return;
+  }
+
+  const f = new FormData(e.target);
+  const x = Object.fromEntries(f.entries());
+
+  const { error } = await supabaseClient
+    .from("listings")
+    .insert({
+      user_id: session.user.id,
+      title: x.title,
+      category: x.category,
+      offer: x.offer,
+      city: x.city,
+      area: null,
+      price: Number(x.price),
+      period: null,
+      description: x.description || "",
+      phone: (x.phone || "").replace(/[^0-9+]/g, ""),
+      photo_url: x.photo || null,
+      status: "pending"
+    });
+
+  if (error) {
+    console.error(error);
+    toast("Erreur : " + error.message);
+    return;
+  }
+
+  e.target.reset();
+  toast("Annonce enregistrée. En attente de validation du paiement.");
 });
 $("menuBtn").addEventListener("click",()=>$("nav").classList.toggle("open"));
 render();
