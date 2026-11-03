@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10251d">\n  <meta name="apple-mobile-web-app-capable" content="yes">\n  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">\n  <link rel="manifest" href="manifest.webmanifest">\n  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <meta name="description" content="Achetez, vendez et louez au Niger : parcelles, maisons, locations, hôtels, cases de passage, voitures et motos.">
+  <title>Niger Marché — Immobilier & Auto</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">NM</span><span>NIGER <b>MARCHÉ</b><small>IMMOBILIER • AUTO • SÉJOUR</small></span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
+  <nav id="nav"><a href="#annonces">Annonces</a><a href="#publier">Publier une annonce</a><a href="#tarifs">Tarifs</a><a href="#paiements">Paiements</a><a href="#apropos">À propos</a></nav>
+  <a class="post-top" href="#publier">＋ Déposer une annonce</a>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <span class="eyebrow">LE MARCHÉ QUI VOUS RAPPROCHE</span>
+      <h1>Trouvez votre prochain <em>chez-vous</em> ou votre prochain véhicule.</h1>
+      <p>Parcelles, maisons, locations, hôtels, voitures et motos partout au Niger.</p>
+      <a class="hero-cta" href="#annonces">Explorer les annonces <span>→</span></a>
+    </div>
+    <div class="hero-art"><div class="sun"></div><div class="house"><div class="roof"></div><div class="house-body"><div class="window"></div><div class="door"></div></div></div><div class="road"></div><div class="car">🚙</div></div>
+    <div class="hero-stats"><span><b>7</b> catégories</span><span><b>8</b> régions + Niamey</span><span><b>100%</b> pensé pour le Niger</span></div>
+  </section>
+
+  <section class="search-wrap" id="annonces">
+    <div class="section-head"><div><span class="eyebrow">VOTRE RECHERCHE</span><h2>Qu'est-ce qui vous intéresse ?</h2></div><span class="live-dot">Annonces de démonstration</span></div>
+    <div class="tabs" id="categoryTabs">
+      <button class="tab active" data-cat="Tous">Tout voir</button>
+      <button class="tab" data-cat="Parcelles">🌱 Parcelles</button>
+      <button class="tab" data-cat="Maisons">🏠 Maisons</button>
+      <button class="tab" data-cat="Locations">🔑 Locations</button>
+      <button class="tab" data-cat="Hôtels">🛎️ Hôtels & cases</button>
+      <button class="tab" data-cat="Voitures">🚘 Voitures</button>
+      <button class="tab" data-cat="Motos">🏍️ Motos</button>
+    </div>
+    <div class="filters">
+      <label class="search-field"><span>⌕</span><input id="keyword" placeholder="Ville, quartier, type de bien..."></label>
+      <select id="region"><option value="">Toutes les villes / régions</option><option>Niamey</option><option>Dosso</option><option>Maradi</option><option>Zinder</option><option>Tahoua</option><option>Agadez</option><option>Diffa</option><option>Tillabéri</option></select>
+      <select id="type"><option value="">Tous les types</option><option>Vente</option><option>Location</option><option>Hébergement</option></select>
+      <select id="sort"><option value="recent">Plus récentes</option><option value="low">Prix croissant</option><option value="high">Prix décroissant</option></select>
+      <button class="filter-btn" id="reset">Réinitialiser</button>
+    </div>
+    <div class="results-line"><span id="resultCount">0 annonce</span><span>Prix affichés en FCFA</span></div>
+    <div class="listing-grid" id="listingGrid"></div>
+    <div class="empty hidden" id="empty">Aucune annonce ne correspond à votre recherche. Essayez d'autres filtres.</div>
+  </section>
+
+  <section class="publish" id="publier">
+    <div class="publish-copy"><span class="eyebrow">VOUS AVEZ UN BIEN À PROPOSER ?</span><h2>Votre annonce mérite<br> d'être vue.</h2><p>Propriétaire, agence, hôtelier ou vendeur de véhicules : présentez votre offre aux personnes qui cherchent au Niger.</p><div class="publish-note">✓ Publication simple &nbsp; ✓ Contact direct &nbsp; ✓ Plusieurs catégories</div></div>
+    <form id="listingForm" class="publish-form">
+      <h3>Déposer une annonce</h3>
+      <div class="form-row"><label>Titre de l'annonce<input name="title" required placeholder="Ex. Villa de 4 chambres à Niamey"></label><label>Catégorie<select name="category" required><option value="">Choisir</option><option>Parcelles</option><option>Maisons</option><option>Locations</option><option>Hôtels</option><option>Voitures</option><option>Motos</option></select></label></div>
+      <div class="form-row"><label>Ville / région<input name="city" required placeholder="Ex. Dosso"></label><label>Prix (FCFA)<input name="price" type="number" min="0" required placeholder="Ex. 25000000"></label></div>
+      <div class="form-row"><label>Type d'offre<select name="offer"><option>Vente</option><option>Location</option><option>Hébergement</option></select></label><label>Téléphone / WhatsApp<input name="phone" required placeholder="Ex. 227 90 00 00 00"></label></div>
+      <label>Description<textarea name="description" rows="3" placeholder="Décrivez le bien, sa superficie, son état, ses équipements..."></textarea></label>
+      <label>Photo (facultatif)<input name="photo" type="url" placeholder="Lien direct vers une photo (https://...)"></label>
+      <button class="submit-btn" type="submit">Préparer mon annonce <span>→</span></button>
+      <p class="form-hint">Prototype : l'annonce est enregistrée sur cet appareil et un message WhatsApp est préparé. Pour une publication visible par tous, une base de données et un espace administrateur devront être connectés.</p>
+    </form>
+  </section>
+
+  
+<section class="pricing" id="tarifs">
+<div class="pricing-head"><span class="eyebrow">OFFRES NIGER MARCHÉ</span><h2>Publiez, vendez et développez votre activité.</h2><p>Toutes les annonces sont payantes. Le paiement réel nécessite un prestataire marchand connecté.</p></div>
+<div class="pricing-grid">
+<article class="pricing-card"><span>🌱</span><h3>Parcelles</h3><div class="plan-price">2 000 <small>FCFA / annonce</small></div><p>Publication d'une annonce de parcelle.</p></article>
+<article class="pricing-card"><span>🏠</span><h3>Maisons à vendre</h3><div class="plan-price">3 000 <small>FCFA / annonce</small></div><p>Maison ou villa à vendre.</p></article>
+<article class="pricing-card"><span>🔑</span><h3>Location & séjour</h3><div class="plan-price">1 000 <small>FCFA / annonce</small></div><p>Locations, hôtels et cases de passage.</p></article>
+<article class="pricing-card"><span>🚘</span><h3>Voitures</h3><div class="plan-price">2 000 <small>FCFA / annonce</small></div><p>Publication d'une voiture.</p></article>
+<article class="pricing-card"><span>🏍️</span><h3>Motos</h3><div class="plan-price">1 000 <small>FCFA / annonce</small></div><p>Publication d'une moto.</p></article>
+</div>
+<div class="extra-pricing"><div><span class="eyebrow">VISIBILITÉ</span><h3>Annonces sponsorisées</h3><p>7 jours : <b>2 000 F</b> · 15 jours : <b>3 500 F</b> · 30 jours : <b>6 000 F</b></p></div><div><span class="eyebrow">ABONNEMENTS PRO</span><h3>Pour agences, garages et hôtels</h3><p>Basic : <b>5 000 F/mois</b> · Pro : <b>10 000 F/mois</b> · Premium : <b>20 000 F/mois</b></p></div></div>
+<div class="commission-box"><div><span class="eyebrow">COMMISSIONS</span><h3>Vente ou réservation réussie ?</h3><p>Barème proposé : voiture 1 %, moto 1,5 %, parcelle/maison 0,5 %, hôtel 5–10 %. Location : frais fixes de 5 000 à 15 000 FCFA. Les parties doivent accepter les conditions avant transaction.</p></div><a href="#transaction" class="secondary-btn">Déclarer une transaction ↓</a></div>
+<div class="transaction-panel" id="transaction"><h3>Déclarer une vente ou réservation</h3><p class="form-hint">Cette déclaration est envoyée pour vérification. Elle ne prélève pas automatiquement de commission.</p>
+<form id="transactionForm"><div class="form-row"><label>Type de transaction<select name="transactionType" required><option value="">Choisir</option><option>Voiture</option><option>Moto</option><option>Parcelle</option><option>Maison</option><option>Location</option><option>Hôtel</option></select></label><label>Montant (FCFA)<input name="amount" type="number" min="1" required placeholder="Ex. 5000000"></label></div>
+<div class="form-row"><label>Référence de l'annonce<input name="listingRef" required placeholder="Ex. NM-1024"></label><label>Téléphone<input name="contact" required placeholder="+227 ..."></label></div><label>Précisions<textarea name="notes" rows="2" placeholder="Date, référence de réservation..."></textarea></label><button class="submit-btn" type="submit">Estimer et déclarer <span>→</span></button></form><div class="commission-result hidden" id="commissionResult"></div></div>
+</section>
+\n<section class="payment-methods" id="paiements">
+ <div class="pricing-head"><span class="eyebrow">PAIEMENTS AU NIGER</span><h2>Cinq moyens de paiement prévus</h2><p>Choisissez le moyen disponible lors du règlement. L’activation des paiements en ligne dépend de la validation des comptes marchands et des connexions techniques officielles.</p></div>
+ <div class="payment-grid">
+  <article class="payment-card"><span class="payment-symbol">A</span><h3>Airtel Money</h3><p>Paiement mobile</p></article>
+  <article class="payment-card"><span class="payment-symbol">M</span><h3>Moov Money</h3><p>Paiement mobile</p></article>
+  <article class="payment-card"><span class="payment-symbol">Z</span><h3>Zamani Money</h3><p>Paiement mobile</p></article>
+  <article class="payment-card"><span class="payment-symbol">N</span><h3>Nita Transfert</h3><p>Transfert d’argent</p></article>
+  <article class="payment-card"><span class="payment-symbol">A</span><h3>Amanata Transfert</h3><p>Transfert d’argent</p></article>
+ </div>
+ <p class="payment-warning">Important : ces cinq moyens sont affichés comme moyens prévus. Aucun paiement n’est encaissé ni vérifié automatiquement dans cette version. Ne communiquez jamais votre code PIN ou OTP. L’administrateur devra confirmer les transactions par un canal marchand sécurisé avant de publier une annonce ou valider une réservation.</p>
+</section>
+
+<section class="trust" id="apropos"><span class="eyebrow">POUR LE MARCHÉ NIGÉRIEN</span><h2>Un seul endroit. Plusieurs projets.</h2><div class="trust-grid"><article><b>01</b><h3>Immobilier</h3><p>Achat et vente de parcelles, maisons et terrains.</p></article><article><b>02</b><h3>Location & séjour</h3><p>Maisons à louer, hôtels et cases de passage.</p></article><article><b>03</b><h3>Auto & moto</h3><p>Véhicules et motos avec contact direct vendeur.</p></article></div></section>
+</main>
+<footer><a class="brand footer-brand" href="#"><span class="brand-mark">NM</span><span>NIGER <b>MARCHÉ</b><small>IMMOBILIER • AUTO • SÉJOUR</small></span></a><p>© 2026 Niger Marché. Plateforme de petites annonces au Niger.</p><a href="https://wa.me/22791634827" target="_blank" rel="noopener">WhatsApp : +227 91 63 48 27</a><a href="#publier">Publier une annonce ↑</a></footer>
+<a class="whatsapp-float" href="https://wa.me/22791634827?text=Bonjour%20Niger%20March%C3%A9" target="_blank" rel="noopener" aria-label="Contacter Niger Marché sur WhatsApp">☏</a>\n<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>

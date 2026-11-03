@@ -1,0 +1,25 @@
+{
+  "id": "/",
+  "name": "Niger Marché",
+  "short_name": "Niger Marché",
+  "description": "Immobilier, locations, hôtels, voitures et motos partout au Niger.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f5ef",
+  "theme_color": "#10251d",
+  "lang": "fr",
+  "categories": [
+    "business",
+    "shopping",
+    "travel"
+  ],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
